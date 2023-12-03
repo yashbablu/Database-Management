@@ -1,0 +1,45 @@
+<div>
+    {% include 'rent-modal.html' %}
+    <h1>Equipment</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Manufacturer</th>
+                <th scope="col">Rent (price per day)</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, item in equipment %}
+            <tr>
+                <td>{{ index + 1 }}</td>
+                <td>{{ item['name'] }}</td>
+                <td>{{ item['description'] }}</td>
+                <td>{{ item['manufacturer'] }}</td>
+                <td>{{ item['rent'] }}</td>
+                <td>{{ item['quantity'] }}</td>
+                <td><button onclick="rent({{ item['id'] }})" type="button" class="btn btn-primary"
+                        data-toggle="modal" data-target="#rentModal">Rent</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    function rent(id) {
+        console.log(id);
+        const myModalEle = document.getElementById('rentModal');
+        const myModal = new bootstrap.Modal(myModalEle)
+        myModal.show();
+
+        myModalEle.querySelector('#rentModalLabel').innerHTML = 'Rent Item ' + id;
+        const rentForm = document.querySelector('#rentForm');
+        // set input value in rent form to id
+        const rentInput = document.querySelector('#rentItemId');
+        rentInput.value = id;
+    }
+</script>
