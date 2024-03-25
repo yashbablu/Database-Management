@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Payments</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Equipment rented</th>
+            <th scope="col">Customer name</th>
+            <th scope="col">Total Cost (in USD)</th>
+            <th scope="col">Payment Date</th>
+            <th scope="col" class="text-center">Payment Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for index, item in data %}
+        <tr>
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ item.equipment.name }}</td>
+            <td>{{ item.customer.name }}</td>
+            <td>$ {{ item.rent.total_price }}</td>
+            <td>{% if item.payment %}{{item.payment.date.strftime('%d-%m-%Y')}} {% else %} - {% endif %}</td>
+            <td class="text-center">{% if item.payment %} <i class="material-icons" style="color: green;">check_circle</i> {% else %} - {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

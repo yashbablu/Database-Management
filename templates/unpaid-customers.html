@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-title">
+    <h1>List of unpaid customers</h1>
+    <div class="print-button">
+        <input type="button" value="Print this page" onClick="window.print()">
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer name</th>
+            <th scope="col">Equipment rented</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Due Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for index, item in data %}
+        <tr>
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ item.customer.name }}</td>
+            <td>{{ item.equipment.name }}</td>
+            <td>{{ item.rent.start_date.strftime('%d %b %Y') }}</td>
+            <td>{{ item.rent.end_date.strftime('%d %b %Y') }}</td>
+            <td>$ {{ item.rent.total_price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

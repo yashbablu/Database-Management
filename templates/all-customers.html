@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Report of All Customers</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer name</th>
+            <th scope="col">Equipment rented</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for index, item in data %}
+        <tr>
+            <th scope="row">{{ index + 1 }}</th>
+            <td>
+                <a href="/customer/{{item.customer.id}}">
+                    {{ item.customer.name }}
+                </a>
+            </td>
+            <td>{{ item.equipment }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

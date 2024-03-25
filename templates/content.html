@@ -1,6 +1,9 @@
 <div>
     {% include 'rent-modal.html' %}
-    <h1>Equipment</h1>
+    <div>
+        <h1>Equipment</h1>
+        <a href="/equipment/add" class="btn btn-primary">Add Equipment</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -22,8 +25,11 @@
                 <td>{{ item['manufacturer'] }}</td>
                 <td>{{ item['rent'] }}</td>
                 <td>{{ item['quantity'] }}</td>
-                <td><button onclick="rent({{ item['id'] }})" type="button" class="btn btn-primary"
-                        data-toggle="modal" data-target="#rentModal">Rent</button></td>
+                <td>
+                    <button onclick="rent({{ item['id'] }})" type="button" class="btn btn-link" data-toggle="modal"
+                        data-target="#rentModal">Rent</button>
+                    <a href="/equipment/edit/{{ item['id'] }}" class="btn btn-link">Edit</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

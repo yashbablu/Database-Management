@@ -1,4 +1,5 @@
 from db import db
+import enum
 
 class MedicalEquipment(db.Model):
     __tablename__ = "medical_equipment"
@@ -26,6 +27,7 @@ class Client(db.Model):
     address = db.Column(db.Text)
     phone = db.Column(db.String(12), unique=True, nullable=False)
 
+
 class Rent(db.Model):
     __tablename__ = "rents"
     id = db.Column(db.Integer, primary_key=True)
@@ -36,5 +38,13 @@ class Rent(db.Model):
     total_price = db.Column(db.Float, nullable=False)
 
     # A foreign key relationship
-    # client = db.relationship('Client', backref='rents', lazy=True)
-    # equipment = db.relationship('MedicalEquipment', backref='rents', lazy=True)
+    client = db.relationship('Client', backref='rents', lazy=True)
+    equipment = db.relationship('MedicalEquipment', backref='rents', lazy=True)
+    payment = db.relationship('Payment', backref='rent',uselist=False, lazy=True)
+
+class Payment(db.Model):
+    __tablename__ = "payments"
+    id = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.Float, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    rent_id = db.Column(db.Integer, db.ForeignKey('rents.id'), nullable=False)

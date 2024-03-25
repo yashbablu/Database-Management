@@ -1,7 +1,67 @@
-<html>
-    {% include 'head.html' %}
-    <body>
-        {% include 'header.html' %}
-        {% include 'content.html' %}
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="text-center">
+                    <h1 class="display-4 text-primary">Welcome to MedEquip Hub</h1>
+                    <p class="lead">Discover a world of excellence in medical equipment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h2 class="card-title text-success">About Us</h2>
+                        <p class="card-text">
+                            We are dedicated to providing high-quality medical equipment to meet your needs.
+                            Explore our range of products designed for comfort and functionality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h2 class="card-title text-info">Services</h2>
+                        <p class="card-text">
+                            Our services include equipment rental, personalized assistance, and timely delivery.
+                            We strive to make your experience seamless and stress-free.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-8 offset-md-2">
+                <div class="card bg-warning">
+                    <div class="card-body">
+                        <h2 class="card-title text-dark">User Manual</h2>
+                        <ul>
+                            <li>For Clients:</li>
+                                <ol>
+                                    <li>Log in to your account using the provided credentials.</li>
+                                    <li>View the list of available medical equipment and their details.</li>
+                                    <li>Rent a piece of equipment by specifying the start and end date.</li>
+                                    <li>Complete the transaction by following the payment instructions.</li>
+                                    <li>View your rental history and payment status.</li>
+                                </ol>
+                            <li>For Managers:</li>
+                                <ol>
+                                    <li>Log in to your manager account with the given credentials.</li>
+                                    <li>Update the inventory database by adding new equipment or updating existing ones.</li>
+                                    <li>Take orders from clients over the phone or in person and generate receipts.</li>
+                                    <li>Generate reports, including customer information, rented equipment, pending payments, and profit calculation.</li>
+                                </ol>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

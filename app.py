@@ -3,6 +3,8 @@ from models import db
 
 app = Flask(__name__)
 
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root@localhost/dbms"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
